@@ -4,7 +4,6 @@ import { galleryItems } from "./gallery-items.js";
 const gallery = document.querySelector(".gallery");
 const cardsMurkup = addMarkupToGellery(galleryItems);
 
-gallery.addEventListener("click", onClickImg);
 gallery.insertAdjacentHTML("afterbegin", cardsMurkup);
 
 function addMarkupToGellery(galleryItems) {
@@ -18,30 +17,7 @@ function addMarkupToGellery(galleryItems) {
     })
     .join("");
 }
-
-function onClickImg(e) {
-  e.preventDefault();
-
-  if (e.target.nodeName !== "IMG") {
-    retun;
-  }
-
-  const onCloseModal = (e) => {
-    const ESC_KEY = "Escape";
-    if (e.code === ESC_KEY) {
-      linkGallery.close();
-    }
-  };
-
-  const linkGallery = new SimpleLightbox(".gallery a", {
-    captionsDelay: 250,
-
-    onShow: () => {
-      window.addEventListener("keydown", onCloseModal);
-    },
-    onClose: () => {
-      window.removeEventListener("keydown", onCloseModal);
-    },
-  });
-  linkGallery.show();
-}
+const lightbox = new SimpleLightbox(".gallery a", {
+  captionsDelay: 250,
+  captionsData: "alt",
+});
