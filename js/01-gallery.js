@@ -43,10 +43,10 @@ function onClickImg(e) {
   const istance = basicLightbox.create(
     `<img src="${e.target.dataset.source}" width="800" height="600">`,
     {
-      onShow: () => {
+      onShowPopup: () => {
         window.addEventListener("keydown", onCloseModal);
       },
-      onClose: () => {
+      onClosePopup: () => {
         window.removeEventListener("keydown", onCloseModal);
       },
     }
